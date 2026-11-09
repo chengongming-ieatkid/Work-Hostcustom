@@ -1,0 +1,272 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-safe: var(--safe);
+  --color-caution: var(--caution);
+  --color-radius-sm: var(--radius-sm);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Zinc remap — components are written dark-first with zinc utilities.
+     Mapping the scale through variables lets every zinc class (including
+     opacity and hover variants) follow the active theme automatically. */
+  --color-zinc-50: var(--zinc-50);
+  --color-zinc-100: var(--zinc-100);
+  --color-zinc-200: var(--zinc-200);
+  --color-zinc-300: var(--zinc-300);
+  --color-zinc-400: var(--zinc-400);
+  --color-zinc-500: var(--zinc-500);
+  --color-zinc-600: var(--zinc-600);
+  --color-zinc-700: var(--zinc-700);
+  --color-zinc-800: var(--zinc-800);
+  --color-zinc-900: var(--zinc-900);
+  --color-zinc-950: var(--zinc-950);
+}
+
+/* TVQ Work Copilot — natural, warm, human-centered.
+   Palette: Paper · Stone · Sage · Forest · Ink.
+   Light-first: calm paper surfaces, forest-green signal, ink text.
+   No neon, no purple-blue gradients, minimal chrome — AI appears in
+   context, not as decoration. */
+:root {
+  color-scheme: light;
+  --background: oklch(0.975 0.006 85); /* Paper */
+  --foreground: oklch(0.24 0.015 85); /* Ink */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.015 85);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.015 85);
+  --primary: oklch(0.38 0.07 152); /* Forest */
+  --primary-foreground: oklch(0.98 0.004 85);
+  --secondary: oklch(0.93 0.008 85); /* Stone tint */
+  --secondary-foreground: oklch(0.3 0.012 85);
+  --muted: oklch(0.94 0.006 85);
+  --muted-foreground: oklch(0.5 0.012 80); /* Stone */
+  --accent: oklch(0.92 0.02 148); /* Sage tint */
+  --accent-foreground: oklch(0.3 0.04 152);
+  --destructive: oklch(0.5 0.16 25);
+  --border: oklch(0.3 0.012 85 / 12%);
+  --input: oklch(0.3 0.012 85 / 10%);
+  --ring: oklch(0.38 0.07 152);
+  --signal: oklch(0.38 0.07 152); /* Forest */
+  --signal-foreground: oklch(0.98 0.004 85);
+  --safe: oklch(0.5 0.1 152); /* Sage deep */
+  --caution: oklch(0.6 0.12 75); /* Warm amber */
+  --chart-1: oklch(0.38 0.07 152);
+  --chart-2: oklch(0.62 0.08 148);
+  --chart-3: oklch(0.6 0.12 75);
+  --chart-4: oklch(0.5 0.16 25);
+  --chart-5: oklch(0.55 0.01 80);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.955 0.008 85); /* Deeper paper */
+  --sidebar-foreground: oklch(0.24 0.015 85);
+  --sidebar-primary: oklch(0.38 0.07 152);
+  --sidebar-primary-foreground: oklch(0.98 0.004 85);
+  --sidebar-accent: oklch(0.92 0.015 148);
+  --sidebar-accent-foreground: oklch(0.3 0.04 152);
+  --sidebar-border: oklch(0.3 0.012 85 / 10%);
+  --sidebar-ring: oklch(0.38 0.07 152);
+
+  /* Zinc scale on paper: dark text, light surfaces (inverted from dark-first authoring) */
+  --zinc-50: oklch(0.26 0.015 85);
+  --zinc-100: oklch(0.3 0.015 85);
+  --zinc-200: oklch(0.38 0.012 85);
+  --zinc-300: oklch(0.46 0.012 82);
+  --zinc-400: oklch(0.53 0.01 80);
+  --zinc-500: oklch(0.56 0.01 80);
+  --zinc-600: oklch(0.6 0.01 80);
+  --zinc-700: oklch(0.78 0.008 85);
+  --zinc-800: oklch(0.88 0.008 85);
+  --zinc-900: oklch(0.955 0.006 85);
+  --zinc-950: oklch(0.975 0.006 85);
+}
+
+/* Dark mode — warm ink instead of blue-graphite, sage signal */
+[data-theme='dark'] {
+  color-scheme: dark;
+  --background: oklch(0.17 0.008 85);
+  --foreground: oklch(0.93 0.005 85);
+  --card: oklch(0.21 0.01 85);
+  --card-foreground: oklch(0.93 0.005 85);
+  --popover: oklch(0.23 0.01 85);
+  --popover-foreground: oklch(0.93 0.005 85);
+  --primary: oklch(0.72 0.09 148); /* Sage bright */
+  --primary-foreground: oklch(0.17 0.01 85);
+  --secondary: oklch(0.26 0.01 85);
+  --secondary-foreground: oklch(0.88 0.005 85);
+  --muted: oklch(0.24 0.01 85);
+  --muted-foreground: oklch(0.6 0.008 85);
+  --accent: oklch(0.27 0.015 148);
+  --accent-foreground: oklch(0.93 0.005 85);
+  --destructive: oklch(0.62 0.19 25);
+  --border: oklch(0.93 0.005 85 / 10%);
+  --input: oklch(0.93 0.005 85 / 13%);
+  --ring: oklch(0.72 0.09 148);
+  --signal: oklch(0.72 0.09 148);
+  --signal-foreground: oklch(0.17 0.01 85);
+  --safe: oklch(0.74 0.12 152);
+  --caution: oklch(0.79 0.14 78);
+  --chart-1: oklch(0.72 0.09 148);
+  --chart-2: oklch(0.74 0.12 152);
+  --chart-3: oklch(0.79 0.14 78);
+  --chart-4: oklch(0.62 0.19 25);
+  --chart-5: oklch(0.5 0.01 85);
+  --sidebar: oklch(0.19 0.009 85);
+  --sidebar-foreground: oklch(0.93 0.005 85);
+  --sidebar-primary: oklch(0.72 0.09 148);
+  --sidebar-primary-foreground: oklch(0.17 0.01 85);
+  --sidebar-accent: oklch(0.26 0.012 148);
+  --sidebar-accent-foreground: oklch(0.93 0.005 85);
+  --sidebar-border: oklch(0.93 0.005 85 / 10%);
+  --sidebar-ring: oklch(0.72 0.09 148);
+
+  /* Zinc scale on warm ink */
+  --zinc-50: oklch(0.95 0.005 85);
+  --zinc-100: oklch(0.9 0.006 85);
+  --zinc-200: oklch(0.8 0.006 85);
+  --zinc-300: oklch(0.7 0.006 85);
+  --zinc-400: oklch(0.62 0.008 85);
+  --zinc-500: oklch(0.55 0.008 85);
+  --zinc-600: oklch(0.48 0.008 85);
+  --zinc-700: oklch(0.38 0.01 85);
+  --zinc-800: oklch(0.28 0.01 85);
+  --zinc-900: oklch(0.22 0.01 85);
+  --zinc-950: oklch(0.17 0.008 85);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Micro-label style used across the OS chrome */
+  .os-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground;
+  }
+}
+
+/* Accent themes — switched via data-accent. Sage is the default identity,
+   so only the alternates need overrides. Values are theme-aware. */
+[data-accent='forest'] {
+  --signal: oklch(0.32 0.06 155);
+  --signal-foreground: oklch(0.98 0.004 85);
+  --primary: oklch(0.32 0.06 155);
+  --ring: oklch(0.32 0.06 155);
+  --sidebar-primary: oklch(0.32 0.06 155);
+  --sidebar-ring: oklch(0.32 0.06 155);
+}
+[data-theme='dark'][data-accent='forest'] {
+  --signal: oklch(0.64 0.08 152);
+  --signal-foreground: oklch(0.17 0.01 85);
+  --primary: oklch(0.64 0.08 152);
+  --ring: oklch(0.64 0.08 152);
+  --sidebar-primary: oklch(0.64 0.08 152);
+  --sidebar-ring: oklch(0.64 0.08 152);
+}
+[data-accent='amber'] {
+  --signal: oklch(0.55 0.12 70);
+  --signal-foreground: oklch(0.98 0.004 85);
+  --primary: oklch(0.55 0.12 70);
+  --ring: oklch(0.55 0.12 70);
+  --sidebar-primary: oklch(0.55 0.12 70);
+  --sidebar-ring: oklch(0.55 0.12 70);
+}
+[data-theme='dark'][data-accent='amber'] {
+  --signal: oklch(0.79 0.14 78);
+  --signal-foreground: oklch(0.2 0.04 75);
+  --primary: oklch(0.79 0.14 78);
+  --ring: oklch(0.79 0.14 78);
+  --sidebar-primary: oklch(0.79 0.14 78);
+  --sidebar-ring: oklch(0.79 0.14 78);
+}
+[data-accent='rose'] {
+  --signal: oklch(0.5 0.15 18);
+  --signal-foreground: oklch(0.98 0.004 85);
+  --primary: oklch(0.5 0.15 18);
+  --ring: oklch(0.5 0.15 18);
+  --sidebar-primary: oklch(0.5 0.15 18);
+  --sidebar-ring: oklch(0.5 0.15 18);
+}
+[data-theme='dark'][data-accent='rose'] {
+  --signal: oklch(0.68 0.16 18);
+  --signal-foreground: oklch(0.17 0.01 85);
+  --primary: oklch(0.68 0.16 18);
+  --ring: oklch(0.68 0.16 18);
+  --sidebar-primary: oklch(0.68 0.16 18);
+  --sidebar-ring: oklch(0.68 0.16 18);
+}
+
+/* Density */
+[data-density='compact'] {
+  --density-pad: 0.5rem;
+  --density-gap: 0.5rem;
+}
+[data-density='comfortable'] {
+  --density-pad: 1rem;
+  --density-gap: 1rem;
+}
+
+/* Status colors authored for dark surfaces need darker equivalents on paper.
+   White is kept for text on signal buttons but darkened for knobs/hovers. */
+[data-theme='light'] .text-emerald-300 { color: oklch(0.45 0.1 155); }
+[data-theme='light'] .text-emerald-400 { color: oklch(0.5 0.12 155); }
+[data-theme='light'] .text-amber-300 { color: oklch(0.55 0.12 70); }
+[data-theme='light'] .text-amber-400 { color: oklch(0.6 0.13 70); }
+[data-theme='light'] .text-amber-200 { color: oklch(0.5 0.1 70); }
+[data-theme='light'] .text-amber-100 { color: oklch(0.45 0.09 70); }
+[data-theme='light'] .text-red-300 { color: oklch(0.5 0.15 25); }
+[data-theme='light'] .text-red-200 { color: oklch(0.45 0.14 25); }
+[data-theme='light'] .hover\:text-red-300:hover { color: oklch(0.45 0.15 25); }
+[data-theme='light'] .text-rose-400 { color: oklch(0.55 0.16 15); }
+[data-theme='light'] .text-rose-500 { color: oklch(0.5 0.17 15); }
+[data-theme='light'] .bg-white { background-color: oklch(0.26 0.015 85); }
+[data-theme='light'] .hover\:bg-white:hover { background-color: oklch(0.18 0.015 85); }
+[data-theme='light'] .hover\:text-white:hover { color: oklch(0.24 0.015 85); }
